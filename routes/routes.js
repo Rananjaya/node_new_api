@@ -1,4 +1,4 @@
-const { Login } = require('../controllers/loginController');
+// const { Login } = require('../controllers/loginController');
 const Register = require('../controllers/registerController');
 const LoginC = require('../controllers/loginController');
 

@@ -1,20 +1,29 @@
 const mysql = require('../model');
+const bcrypt = require('bcrypt');
+const saltRounds = 10
 
 exports.Register = function(req,res){
+
     var insertSQL  = 'INSERT INTO test_user(username,password) VALUES (?,?)';
-    var InsertBody = [req.body.username,req.body.password];
+    username = req.body.username;
+    password = req.body.password;
+    // var InsertBody = [username,password];
 
 
-
-    mysql.query(insertSQL,InsertBody,function(err){
-        if(err){
-            console.log("rana error",err)
-          }else{
-
-            res.json({"Error": false, "Message": "Account created"});
-          }
-
-
+    bcrypt.hash(password,saltRounds,(err, hash)=>{
+        let encr_password = hash
+        mysql.query(insertSQL,[username,encr_password],function(err){
+            if(err){
+                console.log("rana error",err)
+              }else{
+                console.log("new account created")
+                res.json({"Error": false, "Message": "Account created"});
+              }
+    
+    
+        })
     })
+
+
 
 }
