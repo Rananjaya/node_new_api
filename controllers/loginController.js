@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10
 
 exports.LoginC = function(req,res){
-    var insertSQL  = 'SELECT * FROM users WHERE username = ?';
+    var insertSQL  = 'SELECT * FROM admin_user WHERE username = ?';
     var username = req.body.username
     var password = req.body.password
     // var InsertBody = [req.body.username,req.body.password];

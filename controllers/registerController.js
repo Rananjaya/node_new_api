@@ -4,7 +4,7 @@ const saltRounds = 10
 
 exports.Register = function(req,res){
 
-    var insertSQL  = 'INSERT INTO users(username,password) VALUES (?,?)';
+    var insertSQL  = 'INSERT INTO admin_user (username,password) VALUES (?,?)';
     username = req.body.username;
     password = req.body.password;
     // var InsertBody = [username,password];
